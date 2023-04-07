@@ -28,16 +28,15 @@ export const furnitureServiceFactory = (token) => {
         return result;
     };
 
-    const edit = (gameId, data) => request.put(`${baseUrl}/${gameId}`, data);
+    const edit = (furnitureId, data) => request.put(`${baseUrl}/${furnitureId}`, data);
 
-    const deleteGame = (gameId) => request.delete(`${baseUrl}/${gameId}`);
-
+    const deleteFurniture = (furnitureId) => request.delete(`${baseUrl}/${furnitureId}`);
 
     return {
         getAll,
         getOne,
         create,
         edit,        
-        delete: deleteGame,
+        delete: deleteFurniture,
     };
 }

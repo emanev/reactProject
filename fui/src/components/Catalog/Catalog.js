@@ -1,9 +1,10 @@
+import { useFurnitureContext } from "../../contexts/FurnitureContext";
+
 import { CatalogItem } from "./CatalogItem/CatalogItem";
 
-export const Catalog = ({
-   furnitures,
-}) => {
+export const Catalog = () => {
     const fontSize24px = {fontsize:'24px'};
+    const { furnitures } = useFurnitureContext();
     
     return (
         <div className="design_section layout_padding">

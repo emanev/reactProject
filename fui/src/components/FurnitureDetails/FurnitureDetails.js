@@ -3,12 +3,13 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { furnitureServiceFactory } from '../../services/furnitureService';
 import { useService } from '../../hooks/useService';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useFurnitureContext } from '../../contexts/FurnitureContext';
 
 export const FurnitureDetails = () => {
-    const { userId } = useContext(AuthContext);
-    const [username, setUsername] = useState('');
-    const { furnitureId } = useParams();
+    const { furnitureId } = useParams(); 
+    const { userId } = useAuthContext();
+    const { deleteFurniture } = useFurnitureContext();
     const [furniture, setFurniture] = useState({});
     const furnitureService = useService(furnitureServiceFactory)
     const navigate = useNavigate();
@@ -23,12 +24,17 @@ export const FurnitureDetails = () => {
     const isOwner = furniture._ownerId === userId;
 
     const onDeleteClick = async () => {
-        await furnitureService.delete(furniture._id);
+         // eslint-disable-next-line no-restricted-globals
+         const result = confirm(`Are you sure you want to delete ${furniture.name}`);
 
-        // TODO: delete from state
+         if (result) {
+            await furnitureService.delete(furniture._id);
 
-        navigate('/catalog');
-    };
+            deleteFurniture(furniture._id);
+
+            navigate('/catalog');
+         }
+   };
 
     return (
         <div className="about_section layout_padding">
@@ -41,14 +47,14 @@ export const FurnitureDetails = () => {
                   <div className="col-md-6">
                      <h1 className="about_taital">Furniture Details</h1>                     
                      <p className="about_text">Name: {furniture.name}</p>
-                     <p className="about_text">Price: {furniture.price}</p>
+                     <p className="about_text">Price: {furniture.price}$</p>
                      {isOwner && (
-                     <div className="readmore_bt">                     
-                        <Link to={`/catalog/${furniture._id}/edit`} className="subscribe_bt">Edit</Link>
-                        <input className="subscribe_bt" onClick={onDeleteClick} type="submit" value="Delete"/>                   
-                        {/* <a href="#">Edit</a>
-                        <a href="#">Delete</a> */}
-                     </div>
+                        <div className="readmore_bt">                     
+                           <Link to={`/catalog/${furniture._id}/edit`} className="subscribe_bt">Edit</Link>
+                           <input className="subscribe_bt" onClick={onDeleteClick} type="submit" value="Delete"/>                   
+                           {/* <a href="#">Edit</a>
+                           <a href="#">Delete</a> */}
+                        </div>
                      )}
                   </div>
                </div>

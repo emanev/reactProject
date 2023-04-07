@@ -1,24 +1,33 @@
-import { useState } from 'react';
+import { useFurnitureContext } from '../../contexts/FurnitureContext';
+import { useForm } from '../../hooks/useForm';
 
-export const CreateFurniture = ({
-    onCreateFurnitureSubmit,
-}) => {
-
-	const [values, setValues] = useState({
+export const CreateFurniture = () => {
+    const {onCreateFurnitureSubmit} = useFurnitureContext();
+    const { values, changeHandler, onSubmit } = useForm({
         name: '',
-		price: '',
-        image: '',        
-    });
+ 	    price: '',
+        image: '',  
+    }, onCreateFurnitureSubmit);
 
-    const changeHandler = (e) => {
-        setValues(state => ({...state, [e.target.name]: e.target.value}))
-    };
+// export const CreateFurniture = ({
+//     onCreateFurnitureSubmit,
+// }) => {
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+// 	const [values, setValues] = useState({
+//         name: '',
+// 		   price: '',
+//         image: '',        
+//     });
 
-        onCreateFurnitureSubmit(values);
-    };
+//     const changeHandler = (e) => {
+//         setValues(state => ({...state, [e.target.name]: e.target.value}))
+//     };
+
+//     const onSubmit = (e) => {
+//         e.preventDefault();
+
+//         onCreateFurnitureSubmit(values);
+//     };
 
     return (
       <div className="newsletter_section layout_padding">

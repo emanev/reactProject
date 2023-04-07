@@ -1,21 +1,43 @@
-export const CreateFurniture = () => {    
+import { useState } from 'react';
+
+export const CreateFurniture = ({
+    onCreateFurnitureSubmit,
+}) => {
+
+	const [values, setValues] = useState({
+        name: '',
+		price: '',
+        image: '',        
+    });
+
+    const onChangeHandler = (e) => {
+        setValues(state => ({...state, [e.target.name]: e.target.value}))
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        onCreateFurnitureSubmit(values);
+    };
 
     return (
-        <div className="newsletter_section layout_padding">
-         <div className="container">            
-		   <div className="col-md-6">
-			  <h1 className="newsletter_taital">Create Furniture</h1>			  
-			  <input type="text" className="email_text" placeholder="Enter Furniture Name..." name="furniture" id="furniture" />
-			  <input type="number" className="email_text" placeholder="Enter Price..." name="price" id="price" />
-			  <input type="text" className="email_text" placeholder="Enter Image..." name="image" id="image" />
-			
-			  {/* <input className="btn submit" type="submit" value="Create Game"> */}
-			  
-			  <div className="subscribe_bt">
-				<a href="#">Create</a>					
-			  </div>
-		   </div>            
-         </div>
+      <div className="newsletter_section layout_padding">
+		<form id="create" method="post" onSubmit={onSubmit}>
+			<div className="container">            
+			<div className="col-md-6">
+				<h1 className="newsletter_taital">Create Furniture</h1>			  
+				<input value={values.name} onChange={onChangeHandler} type="text" className="email_text" placeholder="Enter Furniture Name..." name="name" id="name" />
+				<input value={values.price} onChange={onChangeHandler} type="number" className="email_text" placeholder="Enter Price..." name="price" id="price" />
+				<input value={values.image} onChange={onChangeHandler} type="text" className="email_text" placeholder="Enter Image..." name="image" id="image" />
+				
+				<input className="subscribe_bt" type="submit" value="Add Furniture" />
+				
+				<div className="subscribe_bt">
+					<a type="submit" value="Add Furniture">Add Furniture</a>					
+				</div>
+			</div>            
+			</div>
+		</form>
       </div>
     );
 };

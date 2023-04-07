@@ -1,6 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { AuthContext } from '../../contexts/AuthContext';
+
 export const Header = () => {
+    const { isAuthenticated, userEmail } = useContext(AuthContext);
+
     return (
         <div className="header_section">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,26 +21,34 @@ export const Header = () => {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/catalog">All</Link>
-                            </li>                            
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/create-furniture">Create</Link>
-                            </li>                            
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/logout">Logout</Link>
-                            </li>                            
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/login">Login</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/register">Register</Link>
-                            </li>
+                            </li>  
+                            {isAuthenticated && ( 
+                            <>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/create-furniture">Create</Link>
+                                </li>                            
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/logout">Logout</Link>
+                                </li>
+                            </>
+                            )}
+                            {!isAuthenticated && ( 
+                            <>                                
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/login">Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/register">Register</Link>
+                                </li>
+                            </>
+                            )}                           
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
                             <div className="search_icon">
                                 <ul>
                                     <li><a href="#"><img src="images/search-icon.png" /></a></li>
-                                    <li><a href="#"><img src="images/user-icon.png" /></a></li>
-                                </ul>
+                                    <li><a href="#"><img src="images/user-icon.png" /></a></li>                                    
+                                </ul>                                
                             </div>
                         </form>
                     </div>         

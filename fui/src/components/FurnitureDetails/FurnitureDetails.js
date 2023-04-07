@@ -1,4 +1,34 @@
-export const FurnitureDetails = () => {    
+import { useEffect, useState, useContext } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+
+import { furnitureServiceFactory } from '../../services/furnitureService';
+import { useService } from '../../hooks/useService';
+import { AuthContext } from '../../contexts/AuthContext';
+
+export const FurnitureDetails = () => {
+    const { userId } = useContext(AuthContext);
+    const [username, setUsername] = useState('');
+    const { furnitureId } = useParams();
+    const [furniture, setFurniture] = useState({});
+    const furnitureService = useService(furnitureServiceFactory)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      furnitureService.getOne(furnitureId)
+            .then(result => {
+               setFurniture(result);
+            })
+    }, [furnitureId]);
+
+    const isOwner = furniture._ownerId === userId;
+
+    const onDeleteClick = async () => {
+        await furnitureService.delete(furniture._id);
+
+        // TODO: delete from state
+
+        navigate('/catalog');
+    };
 
     return (
         <div className="about_section layout_padding">
@@ -6,13 +36,16 @@ export const FurnitureDetails = () => {
             <div className="about_section_2">
                <div className="row">
                   <div className="col-md-6">
-                     <div className="image_2"><img src="images/img-2.png" /></div>
+                     <div className="image_2"><img src={furniture.image} /></div>
                   </div>
                   <div className="col-md-6">
-                     <h1 className="about_taital">Furniture Details</h1>
-                     <p className="about_text">NAME</p>
-                     <p className="about_text">PRICE</p>
-                     <div className="readmore_bt"><a href="#">Edit</a></div>
+                     <h1 className="about_taital">Furniture Details</h1>                     
+                     <p className="about_text">Name: {furniture.name}</p>
+                     <p className="about_text">Price: {furniture.price}</p>
+                     <div className="readmore_bt">
+                        <a href="#">Edit</a>
+                        <a href="#">Delete</a>
+                     </div>
                   </div>
                </div>
             </div>

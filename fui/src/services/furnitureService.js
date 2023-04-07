@@ -1,6 +1,8 @@
 import { requestFactory } from './requester';
 
-const baseUrl = 'http://localhost:3030/jsonstore/furnitures';
+// const baseUrl = 'http://localhost:3030/jsonstore/furnitures';
+const baseUrl = 'http://localhost:3030/data/furnitures';
+
 
 export const furnitureServiceFactory = (token) => {
     const request = requestFactory(token);

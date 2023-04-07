@@ -50,10 +50,9 @@ export const Register = () => {
                         />   
 
                            <div className="send_bt">
-                              <a type="submit" value="Register">Register</a>
+                              {/* <a type="submit" value="Register">Register</a> */}
+                              <input type="submit" className="send_bt" value="Register" />
                            </div>
-                           {/* <div className="send_bt"><a href="#">SEND</a></div> */}
-                           <input type="submit" className="send_bt" value="Register" />
                         </div>
                      </div>                  
                   </div>

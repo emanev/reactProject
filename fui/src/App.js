@@ -14,7 +14,7 @@ import { Register } from "./components/Register/Register";
 import { CreateFurniture } from "./components/CreateFurniture/CreateFurniture";
 import { Catalog } from "./components/Catalog/Catalog";
 import { FurnitureDetails } from "./components/FurnitureDetails/FurnitureDetails";
-// import { EditGame } from './components/EditGame/EditGame';
+import { EditFurniture } from './components/EditFurniture/EditFurniture';
 
 function App() {   
    const navigate = useNavigate();
@@ -74,7 +74,7 @@ function App() {
         setAuth({});
     };
 
-    const onGameEditSubmit = async (values) => {
+    const onFurnitureEditSubmit = async (values) => {
         const result = await furnitureService.edit(values._id, values);
 
         setFurnitures(state => state.map(x => x._id === values._id ? result : x))
@@ -105,7 +105,7 @@ function App() {
                     <Route path='/create-furniture' element={<CreateFurniture onCreateFurnitureSubmit={onCreateFurnitureSubmit} />} />
                     <Route path='/catalog' element={<Catalog furnitures={furnitures} />} />
                     <Route path='/catalog/:furnitureId' element={<FurnitureDetails />} />
-                    {/* <Route path='/catalog/:furnitureId/edit' element={<EditFurniture onFurnitureEditSubmit={onFurnitureEditSubmit} />} /> */}
+                    <Route path='/catalog/:furnitureId/edit' element={<EditFurniture onFurnitureEditSubmit={onFurnitureEditSubmit} />} />
                 </Routes>            
         
          <Footer />

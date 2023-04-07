@@ -42,10 +42,14 @@ export const FurnitureDetails = () => {
                      <h1 className="about_taital">Furniture Details</h1>                     
                      <p className="about_text">Name: {furniture.name}</p>
                      <p className="about_text">Price: {furniture.price}</p>
-                     <div className="readmore_bt">
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
+                     {isOwner && (
+                     <div className="readmore_bt">                     
+                        <Link to={`/catalog/${furniture._id}/edit`} className="subscribe_bt">Edit</Link>
+                        <input className="subscribe_bt" onClick={onDeleteClick} type="submit" value="Delete"/>                   
+                        {/* <a href="#">Edit</a>
+                        <a href="#">Delete</a> */}
                      </div>
+                     )}
                   </div>
                </div>
             </div>

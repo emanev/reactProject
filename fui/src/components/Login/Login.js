@@ -44,11 +44,9 @@ export const Login = () => {
                               onChange={changeHandler}                            
                            />
                            <div className="send_bt">
-                              <a type="submit" value="Login">Login</a>
+                              {/* <a type="submit" value="Login">Login</a> */}
+                              <input type="submit" className="send_bt" value="Login" />   
                            </div>
-                              {/* <div className="send_bt"><a href="#">SEND</a></div>*/}
-                              <input type="submit" className="send_bt" value="Login" />                     
-                                 
                         </div>
                      </div>                
                   </div>

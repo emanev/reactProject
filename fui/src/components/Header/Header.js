@@ -47,7 +47,12 @@ export const Header = () => {
                             <div className="search_icon">
                                 <ul>
                                     <li><a href="#"><img src="images/search-icon.png" /></a></li>
-                                    <li><a href="#"><img src="images/user-icon.png" /></a></li>                                    
+                                    <li><a href="#"><img src="images/user-icon.png" /></a></li> 
+                                    {isAuthenticated && ( 
+                                    <>             
+                                        <li> <span> {userEmail} </span> </li>
+                                    </>
+                                    )}                        
                                 </ul>                                
                             </div>
                         </form>

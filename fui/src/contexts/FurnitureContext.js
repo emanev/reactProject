@@ -20,19 +20,27 @@ export const FurnitureProvider = ({
     }, []);
 
     const onCreateFurnitureSubmit = async (data) => {
-        const newFurniture = await furnitureService.create(data);
+        try {
+            const newFurniture = await furnitureService.create(data);
 
-        setFurnitures(state => [...state, newFurniture]);
+            setFurnitures(state => [...state, newFurniture]);
 
-        navigate('/catalog');
+            navigate('/catalog');
+        } catch (error) {
+            console.log('There is a problem');
+        }
     };   
 
     const onFurnitureEditSubmit = async (values) => {
-        const result = await furnitureService.edit(values._id, values);
+        try {
+            const result = await furnitureService.edit(values._id, values);
 
-        setFurnitures(state => state.map(x => x._id === values._id ? result : x))
+            setFurnitures(state => state.map(x => x._id === values._id ? result : x))
 
-        navigate(`/catalog/${values._id}`);
+            navigate(`/catalog/${values._id}`);
+        } catch (error) {
+            console.log('There is a problem');
+        }
     }
     
     const deleteFurniture = (furnitureId) => {

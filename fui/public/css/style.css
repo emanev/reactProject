@@ -279,6 +279,14 @@ button {
     text-transform: uppercase;
 }
 
+.search_icon span{
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #fefefc;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 15px;
     padding-left: 15px;

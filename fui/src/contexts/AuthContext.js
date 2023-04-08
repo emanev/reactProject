@@ -27,19 +27,19 @@ export const AuthProvider = ({
     };
 
     const onRegisterSubmit = async (values) => {
-        const { confirmPassword, ...registerData } = values;
-        if (confirmPassword !== registerData.password) {
-            return;
-        }
-
         try {
+            const { confirmPassword, ...registerData } = values;
+            if (confirmPassword !== registerData.password) {
+                throw new Error('Password mismatch!');                
+            }
+            
             const result = await authService.register(registerData);
 
             setAuth(result);
 
             navigate('/catalog');
         } catch (error) {
-            console.log('There is a problem');
+            console.log('There is a problem.' + error?.message);
         }
     };
 

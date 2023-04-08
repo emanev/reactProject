@@ -51,9 +51,7 @@ export const FurnitureDetails = () => {
                      {isOwner && (
                         <div className="readmore_bt">                     
                            <Link to={`/catalog/${furniture._id}/edit`} className="subscribe_bt">Edit</Link>
-                           <input className="subscribe_bt" onClick={onDeleteClick} type="submit" value="Delete"/>                   
-                           {/* <a href="#">Edit</a>
-                           <a href="#">Delete</a> */}
+                           <input className="subscribe_bt" onClick={onDeleteClick} type="submit" value="Delete"/>                           
                         </div>
                      )}
                   </div>

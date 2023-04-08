@@ -76,17 +76,6 @@ function App() {
                                     </FurnitureOwner>
                                 </RouteGuard>
                             } />
-
-
-                            {/* <Route element={<RouteGuard />}>
-                                        <Route path='/catalog/:gameId/edit' element={
-                                            <GameOwner>
-                                                <EditGame />
-                                            </GameOwner>
-                                        } />
-                                        <Route path='/create-game' element={<CreateGame />} />
-                                        <Route path='/logout' element={<Logout />} />
-                                    </Route> */}
                         </Routes>            
                 
                 <Footer />

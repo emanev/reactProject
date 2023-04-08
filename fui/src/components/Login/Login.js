@@ -24,20 +24,22 @@ export const Login = () => {
                      <div className="col-md-6">
                         <div className="mail_section_1">
                            <h1 className="contact_taital">Login</h1>
+                           
                            <input 
                               type="email"
                               id="email"
                               className="mail_text" 
-                              placeholder="ivan@abv.bg" 
+                              placeholder="Enter Email..." 
                               name={LoginFormKeys.Email}
                               value={values[LoginFormKeys.Email]}
                               onChange={changeHandler} 
                            />
-
+                           
                            <input 
                               type="password"
                               id="login-password"
-                              className="mail_text" 
+                              className="mail_text"
+                              placeholder="Enter Password..."  
                               name={LoginFormKeys.Password}
                               value={values[LoginFormKeys.Password]}
                               onChange={changeHandler}                            

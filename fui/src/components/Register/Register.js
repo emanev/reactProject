@@ -26,7 +26,7 @@ export const Register = () => {
                            id="email" 
                            name="email"
                            class="mail_text" 
-                           placeholder="ivan@abv.bg" 
+                           placeholder="Enter Email..." 
                            value={values.email}
                            onChange={changeHandler}
                         />
@@ -36,6 +36,7 @@ export const Register = () => {
                            class="mail_text" 
                            name="password" 
                            id="register-password"
+                           placeholder="Enter Password..." 
                            value={values.password}
                            onChange={changeHandler}
                         />
@@ -44,7 +45,8 @@ export const Register = () => {
                            type="password" 
                            class="mail_text" 
                            name="confirmPassword" 
-                           id="confirm-password" 
+                           id="confirm-password"
+                           placeholder="Retype Password..."  
                            value={values.confirmPassword}
                            onChange={changeHandler}
                         />   

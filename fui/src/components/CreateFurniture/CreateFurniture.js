@@ -16,7 +16,7 @@ export const CreateFurniture = () => {
 			<div className="col-md-6">
 				<h1 className="newsletter_taital">Add Furniture</h1>			  
 				<input value={values.name} onChange={changeHandler} type="text" className="email_text" placeholder="Enter Furniture Name..." name="name" id="name" />
-				<input value={values.price} onChange={changeHandler} type="number" className="email_text" placeholder="Enter Price..." name="price" id="price" />
+				<input value={values.price} onChange={changeHandler} type="number" className="email_text" placeholder="Enter Price $..." name="price" id="price" />
 				<input value={values.image} onChange={changeHandler} type="text" className="email_text" placeholder="Enter Image..." name="image" id="image" />
 							
 				<div className="subscribe_bt">
